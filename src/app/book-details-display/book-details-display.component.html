@@ -1,0 +1,15 @@
+<div class="card mx-3 my-5">
+    <div class="card-header">
+      {{books.name}}
+      <br>
+      By {{books.Author}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> {{books.desc}} </h5>
+      <p class="card-text">Price: {{books.price | currency:'INR'}} </p>
+      <p>Quantity Left:       {{books.quantity}} </p>
+      <p> Published By:  {{books.publisher}} </p>
+      <p>Languages : {{books.language}} </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>

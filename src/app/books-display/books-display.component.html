@@ -1,0 +1,11 @@
+<div style="display: flex;flex-wrap: wrap;justify-content: center;">
+<div class="card mx-2 my-1" style="width: 25rem;" *ngFor="let books of booksData">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> {{books.name}} </h5>
+    <p class="card-text"> {{books.Author}} </p>
+    <p> price: {{books.price | currency :'INR'}} </p>
+    <a class="btn btn-primary" (click)="showDetails(books)">Go somewhere</a>
+  </div>
+</div>
+</div>
