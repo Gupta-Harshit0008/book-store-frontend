@@ -19,9 +19,8 @@ export class LoginComponent {
 
   login(){
 if(this.userName=== 'harsh' ){
-  alert('loggedin')
-this.router.navigateByUrl('home')
-sessionStorage.setItem('user',this.userName)
+  sessionStorage.setItem('user',this.userName)
+  this.router.navigateByUrl('home')
 }
 else{
   alert('not loggedin')
