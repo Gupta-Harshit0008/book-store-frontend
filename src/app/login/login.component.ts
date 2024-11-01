@@ -2,19 +2,26 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  loginForm:boolean=true;
+  signUpForm:boolean=false;
   userName:any
   password:any
   logindata:any
-  loginstatus:any
+  signUpData:any
+  username:any
+  userEmail:any
+  userPassword:any
+  userCPassword:any
 
   constructor(private router: Router,private loginservice:LoginService){
 
@@ -36,5 +43,31 @@ export class LoginComponent {
       }
     }
     )
+  }
+  signUp(){
+    this.signUpData={
+      userName:this.username,
+      email:this.userEmail,
+      password:this.userPassword,
+      confirmPassword:this.userCPassword
+    }
+    console.log(this.signUpData)
+    this.loginservice.signUp(this.signUpData).subscribe({
+      next: (response)=>{
+        alert('User signUp successfully, kindy login to proceed')
+        this.router.navigateByUrl('login')
+      },
+      error :(err) =>{
+        alert(err.message);
+      }
+    })
+  }
+  signUpClick(){
+    this.loginForm=false;
+    this.signUpForm=true;
+  }
+  loginClick(){
+    this.loginForm=true;
+    this.signUpForm=false;
   }
 }

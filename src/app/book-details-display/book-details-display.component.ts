@@ -19,12 +19,9 @@ constructor(private booksService : BooksDisplayService,private activated:Activat
 }
 ngOnInit(): void {
  this.bookId= this.activated.snapshot.paramMap.get('id')
- console.log(this.bookId)
   this.booksService.getBookById(this.bookId).subscribe((data:any) =>{
     this.books=data
-
   }
-    
   )
 }
 }
