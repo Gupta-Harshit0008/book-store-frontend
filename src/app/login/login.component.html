@@ -14,7 +14,7 @@
         </div>
         <div style="display: flex;justify-content: space-between; width: 300px;cursor: pointer;">
             <div>
-                <button type="submit" class="text-center btn btn-primary" (click)="login()"> login</button>
+                <button type="submit" class="text-center btn btn-primary" (click)="login()"> Login</button>
             </div>
             <div style="align-content: center;">
                 <span (click)="signUpClick()"><u> New to Application?  <b> Sign Up </b></u></span>
@@ -26,22 +26,30 @@
     <br>
     <br>
     <br>
-    <h6>username</h6>
-    <input type="text" required name="username" [(ngModel)]="username">
-    <h6>email</h6>
-    <input type="email" required name="userEmail" [(ngModel)]="userEmail">
-    <h6>password</h6>
-    <input type="password" required name="userPassword" [(ngModel)]="userPassword">
-    <h6>Confirm password</h6>
-    <input type="password" required name="userCPassword" [(ngModel)]="userCPassword">
+    <div class="mb-3">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" required name="username" [(ngModel)]="username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required name="userEmail" [(ngModel)]="userEmail">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" required name="userPassword" [(ngModel)]="userPassword">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" required name="userCPassword" [(ngModel)]="userCPassword">
+      </div>
     <br>
     <br>
-    <div style="display: flex;justify-content: space-between; width: 400px;cursor: pointer;">
+    <div style="display: flex;justify-content: space-between; width: 320px;cursor: pointer;">
         <div>
             <button class="text-center btn btn-primary" (click)="signUp()"> Sign Up</button>
         </div>
-        <div>
-            <span (click)="loginClick()">Already Have Account? Sign in</span>
+        <div style="align-content: center;">
+            <span (click)="loginClick()"><u>Already Have Account? <b>Sign in</b></u></span>
         </div>
     </div>
 </div>
