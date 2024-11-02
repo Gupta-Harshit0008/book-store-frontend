@@ -3,21 +3,23 @@
     <br>
     <br>
     <br>
-    <h6>UserName</h6>
-    <input type="text" required name="userName" [(ngModel)]="userName">
-    <h6 >password</h6>
-    <input type="text" required name="password" [(ngModel)]="password">
-    <br>
-    <br>
-    <div style="display: flex;justify-content: space-between; width: 300px;cursor: pointer;">
-        <div>
-            <button class="text-center btn btn-primary" (click)="login()"> login</button>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="userName" [(ngModel)]="userName">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
-        <div>
-            <span (click)="signUpClick()">new to Application? Sign Up</span>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" required name="password" [(ngModel)]="password">
         </div>
-    </div>
-    
+        <div style="display: flex;justify-content: space-between; width: 300px;cursor: pointer;">
+            <div>
+                <button type="submit" class="text-center btn btn-primary" (click)="login()"> login</button>
+            </div>
+            <div style="align-content: center;">
+                <span (click)="signUpClick()"><u> New to Application?  <b> Sign Up </b></u></span>
+            </div>
+        </div>
 </div>
 <div class="container" *ngIf="signUpForm">
     <h1 class="text-center">signUp</h1>

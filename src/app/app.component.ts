@@ -22,15 +22,6 @@ constructor(private userservice:UserService){}
 
   ngOnInit(): void {
   this.isLoggedIn()
-  const data={email:this.userName}
-  this.userservice.userDetails(data).subscribe({
-    next: (response)=>{
-      console.log(response)
-    },
-    error :(err) =>{
-      alert(err.message);
-    }
-  })
 }
 
   
