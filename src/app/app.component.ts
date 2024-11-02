@@ -5,6 +5,7 @@ import { BooksDisplayComponent } from './books-display/books-display.component';
 import { CarouselsComponent } from './carousels/carousels.component';
 import { FussionComponent } from "./fussion/fussion.component";
 import { CommonModule } from '@angular/common';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,26 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit{
   title = 'onlineBookStoreFrontend';
   isLoggedin:boolean=false
-ngOnInit(): void {
+  userName:any
+constructor(private userservice:UserService){}
+
+  ngOnInit(): void {
   this.isLoggedIn()
+  const data={email:this.userName}
+  this.userservice.userDetails(data).subscribe({
+    next: (response)=>{
+      console.log(response)
+    },
+    error :(err) =>{
+      alert(err.message);
+    }
+  })
 }
 
   
 isLoggedIn(){
-  const userName=sessionStorage.getItem('user')
-if(userName != null){
+  this.userName=sessionStorage.getItem('user')
+if(this.userName != null){
   this.isLoggedin=true
 }
 else{
