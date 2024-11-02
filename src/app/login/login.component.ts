@@ -55,6 +55,8 @@ export class LoginComponent {
     this.loginservice.signUp(this.signUpData).subscribe({
       next: (response)=>{
         alert('User signUp successfully, kindy login to proceed')
+        this.loginForm=true;
+    this.signUpForm=false;
         this.router.navigateByUrl('login')
       },
       error :(err) =>{
