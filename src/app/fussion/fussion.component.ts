@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksDisplayComponent } from '../books-display/books-display.component';
 import { CarouselsComponent } from '../carousels/carousels.component';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fussion',
@@ -12,18 +13,25 @@ import { UserService } from '../services/user.service';
 })
 export class FussionComponent implements OnInit {
   userName:any
-constructor(private userservice:UserService){}
+  data:any
+constructor(private userservice:UserService,private router:Router){}
 
   ngOnInit(): void {
     this.userName=this.userName=sessionStorage.getItem('user')
     const data={email:this.userName}
   this.userservice.userDetails(data).subscribe({
     next: (response)=>{
-      console.log(response)
+      this.data=response
+      sessionStorage.setItem('userId',this.data._id)
     },
     error :(err) =>{
       alert(err.message);
     }
   })
+
+  }
+
+  cart(){
+this.router.navigateByUrl('cart')
   }
 }
