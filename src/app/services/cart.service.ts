@@ -10,6 +10,6 @@ export class CartService {
   constructor(private http:HttpClient) { }
 
   gettingCartItems(userid:any): Observable<any[]>{  
-    return this.http.post<any>(this.cartItemsUrl,userid).pipe(map(response => response.cartItemsDetails))
+    return this.http.post<any>(this.cartItemsUrl,userid)
   }
 }

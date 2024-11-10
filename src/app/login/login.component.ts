@@ -51,7 +51,6 @@ export class LoginComponent {
       password:this.userPassword,
       confirmPassword:this.userCPassword
     }
-    console.log(this.signUpData)
     this.loginservice.signUp(this.signUpData).subscribe({
       next: (response)=>{
         alert('User signUp successfully, kindy login to proceed')

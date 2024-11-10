@@ -1,1 +1,40 @@
-<p>cart works!</p>
+<div class="container">
+    <h1 class="my-3">Shopping Cart</h1>
+    <div style="display: flex;">
+        <div style="width: 60%;padding: 1.5rem;border-right: 1px dotted grey;"> 
+            <div style="height: 60px">Total Items <strong> ({{cartData.length}}) </strong></div>
+            <div *ngFor="let data of cartData" style="border-top: 1px solid grey;border-bottom: 1px solid grey;">
+            <div style="display: flex;justify-content: space-between;" >
+                <div style="width: 600px;height: 100px;"> <div> <b> {{data.name}}</b> </div>
+            <div>
+                by: {{data.Author}} 
+            </div> 
+        </div>
+                <div> {{data.price | currency:'INR'}} </div>
+            </div>
+                <div>
+                    <b>Quantity : {{data.quantity}} </b>
+                </div>
+            </div>
+
+        </div>
+        <div style="width: 40%;height: fit-content;"> 
+            <div style="padding: 1.5rem;">
+                <hr>
+                <h3>Price Details ({{cartData.length}} Items)</h3>
+                <br>
+                <div style="display: flex;justify-content: space-between;"> 
+                    <h6>Order value</h6>
+                    <div>{{ getTotalPrice() | currency : 'INR' }}</div> 
+                </div>
+                <hr>
+                <div style="display: flex;justify-content: space-between;">
+                    <h6>You Pay</h6>
+                    <div>{{ getTotalPrice() | currency : 'INR' }}</div>
+                </div>
+                
+                
+        </div>
+    </div>
+    </div>
+</div>
