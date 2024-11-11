@@ -8,6 +8,7 @@ import { map,Observable } from 'rxjs';
 export class CartService {
   cartItemsUrl='http://localhost:4100/itemsInCart'
   addingItemstoCartUrl='http://localhost:4100/addingBooksToCart'
+  removingItemfromCartUrl='http://localhost:4100/deleteItemFromCart'
   constructor(private http:HttpClient) { }
 
   gettingCartItems(userid:any): Observable<any[]>{  
@@ -16,5 +17,8 @@ export class CartService {
 
   addingItemtToCart(cartData:any){
     return this.http.post(this.addingItemstoCartUrl,cartData)
+  }
+  deletingItemFromCart(deleteData:any){
+    return this.http.request('DELETE',this.removingItemfromCartUrl,{body:deleteData})
   }
 }

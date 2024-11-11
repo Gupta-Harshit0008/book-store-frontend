@@ -43,4 +43,19 @@ export class CartComponent implements OnInit{
   getTotalPrice(): number {
     return this.cartData.reduce((total:any, item:any) => total + (item.price*item.quantity), 0);
   }
+
+  deletefromCart(data:any){
+    const deleteDataPayload=this.Data.Items[data]._id
+    console.log(deleteDataPayload)
+ this.cartservice.deletingItemFromCart({itemId:deleteDataPayload}).subscribe({
+  next: (response) =>{
+    console.log(response);
+    alert('Book have been removed successfully')
+    this.cartData.splice(data,1)
+  },
+  error : (err) =>{
+    alert(err.message);
+  }
+ })
+  }
 }
