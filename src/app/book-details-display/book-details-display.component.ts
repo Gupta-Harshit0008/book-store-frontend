@@ -15,7 +15,7 @@ export class BookDetailsDisplayComponent implements OnInit {
 
   books:any
   bookId:any
-constructor(private booksService : BooksDisplayService,private activated:ActivatedRoute,private cartServcie:CartService){
+constructor(private booksService : BooksDisplayService,private activated:ActivatedRoute,private cartServcie:CartService,private router:Router){
 
 }
 ngOnInit(): void {
@@ -35,6 +35,7 @@ addToCart(){
     if(data){
       alert('Book added to cart successfully')
     }
+        this.router.navigateByUrl('cart')
   })
 }
 }
