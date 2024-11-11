@@ -21,7 +21,6 @@ export class BooksDisplayComponent implements OnInit{
   ngOnInit(): void {
     this.bookService.getallBooks().subscribe(data=>{
       this.booksData=data
-      console.log(this.booksData)
     })
   }
 

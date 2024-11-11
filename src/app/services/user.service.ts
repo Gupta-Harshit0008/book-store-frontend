@@ -11,6 +11,6 @@ export class UserService {
  UserDetailUrl='http://localhost:4100/userDetails/';
 
  userDetails(userid:any): Observable<any[]>{
-  return this.http.post<any>(this.UserDetailUrl,userid).pipe(map(response => response.userDetails))
+  return this.http.post<any>(this.UserDetailUrl,userid)
 }
 }

@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class FussionComponent implements OnInit {
   userName:any
   data:any
+  userdetails:any
+  cartCount:any
 constructor(private userservice:UserService,private router:Router){}
 
   ngOnInit(): void {
@@ -21,7 +23,9 @@ constructor(private userservice:UserService,private router:Router){}
     const data={email:this.userName}
   this.userservice.userDetails(data).subscribe({
     next: (response)=>{
-      this.data=response
+      this.userdetails=response
+      this.cartCount=this.userdetails.CartCount
+      this.data=this.userdetails.userDetails
       sessionStorage.setItem('userId',this.data._id)
     },
     error :(err) =>{
