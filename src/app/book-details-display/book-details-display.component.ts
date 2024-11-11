@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksDisplayService } from '../services/books-display.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-book-details-display',
@@ -14,7 +15,7 @@ export class BookDetailsDisplayComponent implements OnInit {
 
   books:any
   bookId:any
-constructor(private booksService : BooksDisplayService,private activated:ActivatedRoute){
+constructor(private booksService : BooksDisplayService,private activated:ActivatedRoute,private cartServcie:CartService){
 
 }
 ngOnInit(): void {
@@ -23,5 +24,17 @@ ngOnInit(): void {
     this.books=data
   }
   )
+}
+addToCart(){
+  const payload={
+    bookId:this.bookId,
+    userId:sessionStorage.getItem('userId'),
+    quantity:1
+  }
+  this.cartServcie.addingItemtToCart(payload).subscribe((data:any)=>{
+    if(data){
+      alert('Book added to cart successfully')
+    }
+  })
 }
 }
