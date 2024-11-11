@@ -40,6 +40,37 @@ export class CartComponent implements OnInit{
     })
   }
 
+  increment(i:any){
+    this.cartData[i].quantity += 1;
+    const payload={
+      bookId:this.Data.Items[i].bookId,
+      userId:sessionStorage.getItem('userId'),
+      quantity:this.cartData[i].quantity
+    }
+    this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
+      if(data){
+        console.log(data)
+      }
+    })
+  }
+
+  decrement(i:any){
+    if(this.cartData[i].quantity>1){
+      this.cartData[i].quantity -= 1;
+      const payload={
+        bookId:this.Data.Items[i].bookId,
+        userId:sessionStorage.getItem('userId'),
+        quantity:this.cartData[i].quantity
+      }
+      this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
+        if(data){
+          console.log(data)
+        }
+      })
+    }
+    
+  }
+
   getTotalPrice(): number {
     return this.cartData.reduce((total:any, item:any) => total + (item.price*item.quantity), 0);
   }

@@ -13,8 +13,8 @@
                 <div class="my-3 mx-2">  {{data.price | currency:'INR'}} </div>
                 <button class="btn btn-danger my-3 mx-2" style="height: 40px;" (click)="deletefromCart(i)"> Remove </button>
             </div>
-                <div>
-                    <b>Quantity : {{data.quantity}} </b>
+                <div class="my-3">
+                    <b>Quantity :  <button class="btn btn-success" (click)="decrement(i)"> - </button> {{data.quantity}} <button class="btn btn-success" (click)="increment(i)"> + </button> </b>
                 </div>
             </div>
 
