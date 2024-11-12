@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,12 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
  UserDetailUrl='http://localhost:4100/userDetails/';
+ private dataSubject = new BehaviorSubject<any | null>(null);
 
  userDetails(userid:any): Observable<any[]>{
-  return this.http.post<any>(this.UserDetailUrl,userid)
+  if(!this.dataSubject.value){
+    this.http.post<any>(this.UserDetailUrl,userid).pipe(tap(data => this.dataSubject.next(data))).subscribe()
+  }
+  return this.dataSubject.asObservable();
 }
 }
