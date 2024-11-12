@@ -29,6 +29,8 @@ constructor(private router:Router,private userservice:UserService){}
   }
   logout(){
     sessionStorage.removeItem('user')
-    this.router.navigateByUrl('login')
+    this.router.navigate(['/login']).then(()=>{
+      window.location.reload();
+    })
   }
 }

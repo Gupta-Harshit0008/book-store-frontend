@@ -19,7 +19,7 @@ export class FussionComponent implements OnInit {
 constructor(private userservice:UserService,private router:Router){}
 
   ngOnInit(): void {
-    this.userName=this.userName=sessionStorage.getItem('user')
+    this.userName=sessionStorage.getItem('user')
     const data={email:this.userName}
   this.userservice.userDetails(data).subscribe({
     next: (response)=>{
@@ -27,6 +27,7 @@ constructor(private userservice:UserService,private router:Router){}
       this.cartCount=this.userdetails.CartCount
       this.data=this.userdetails.userDetails
       sessionStorage.setItem('userId',this.data._id)
+      sessionStorage.setItem('a',this.data.isAdmin)
     },
     error :(err) =>{
       alert(err.message);

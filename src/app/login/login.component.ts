@@ -35,7 +35,9 @@ export class LoginComponent {
     this.loginservice.login(this.logindata).subscribe({
       next: (response)=>{
         sessionStorage.setItem('user',this.userName)
-        this.router.navigateByUrl('home')
+        this.router.navigate(['/home']).then(()=>{
+          window.location.reload();
+        })
       },
       error :(err) =>{
         alert(err.message);
