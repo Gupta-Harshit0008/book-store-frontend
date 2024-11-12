@@ -7,7 +7,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 let isAdmin=sessionStorage.getItem('a')
  
  if(isAdmin === 'true'){
-  console.log(isAdmin)
+  // console.log(isAdmin)
   return true;
 }
   else{

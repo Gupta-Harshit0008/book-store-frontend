@@ -49,7 +49,7 @@ export class CartComponent implements OnInit{
     }
     this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
       if(data){
-        console.log(data)
+        // console.log(data)
       }
     })
   }
@@ -64,7 +64,7 @@ export class CartComponent implements OnInit{
       }
       this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
         if(data){
-          console.log(data)
+          // console.log(data)
         }
       })
     }
@@ -77,10 +77,10 @@ export class CartComponent implements OnInit{
 
   deletefromCart(data:any){
     const deleteDataPayload=this.Data.Items[data]._id
-    console.log(deleteDataPayload)
+    // console.log(deleteDataPayload)
  this.cartservice.deletingItemFromCart({itemId:deleteDataPayload}).subscribe({
   next: (response) =>{
-    console.log(response);
+    // console.log(response);
     alert('Book have been removed successfully')
     this.cartData.splice(data,1)
   },

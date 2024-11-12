@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="text-center">Add A New Book</h1>
+    <br>
+    <div class="mb-3">
+        <label class="form-label">Book Name*</label>
+        <input type="text" class="form-control" required name="bookName" [(ngModel)]="bookName">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Price*</label>
+        <input type="text" class="form-control" required name="bookPrice" [(ngModel)]="bookPrice">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Author*</label>
+        <input type="text" class="form-control" required name="bookAuthor" [(ngModel)]="bookAuthor">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Quantity*</label>
+        <input type="text" class="form-control" required name="bookQuantity" [(ngModel)]="bookQuantity">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Description*</label>
+        <input type="text" class="form-control" required name="bookDesc" [(ngModel)]="bookDesc">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Publisher*</label>
+        <input type="text" class="form-control" required name="bookPublisher" [(ngModel)]="bookPublisher">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Book Language*</label>
+        <input type="text" class="form-control" required name="bookLanguage" [(ngModel)]="bookLanguage">
+      </div>
+    <br>
+    <div style="cursor: pointer;">
+        <div>
+            <button class="text-center btn btn-primary my-5" (click)="addBook()">Add</button>
+        </div>
+    </div>
+</div>
