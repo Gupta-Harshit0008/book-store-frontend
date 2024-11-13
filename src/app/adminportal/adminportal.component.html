@@ -1,1 +1,11 @@
-<app-add-books></app-add-books>
+<div style="display: flex; justify-content: center;">
+    <button class="btn btn-primary mx-5 my-5" (click)="newBook()"> Add a New Book </button>
+    <button class="btn btn-primary mx-5 my-5" (click)="reports()"> View Reports </button>
+</div>
+
+<div *ngIf="bookAdding"> <app-add-books></app-add-books> </div>
+<div *ngIf="viewreports"> 
+    <br>
+    <br>
+    Page under construction
+</div>

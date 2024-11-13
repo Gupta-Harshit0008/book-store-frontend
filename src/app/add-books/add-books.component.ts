@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AdminService } from '../services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-books',
@@ -17,8 +19,9 @@ export class AddBooksComponent implements OnInit {
   bookPublisher!:string
   bookLanguage!:string
   data:any
+
+  constructor(private adminservice:AdminService,private router:Router){}
   ngOnInit(): void {
-    
   }
   addBook(){
     this.data={
@@ -30,6 +33,16 @@ export class AddBooksComponent implements OnInit {
       publisher:this.bookPublisher,
       language:this.bookLanguage
     }
+    this.adminservice.addNewBook(this.data).subscribe({
+      next : (response)=>{
+        alert('Book Added successfully')
+        this.router.navigate(['home'])
+      },
+      error : (err)=>{
+        alert(err.message)
+      }
+      
+    })
     // console.log(this.data)
   }
 }
