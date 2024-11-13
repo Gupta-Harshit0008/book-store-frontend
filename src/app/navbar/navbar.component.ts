@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit{
 
 userName:any
 userdetails:any
-constructor(private router:Router,private userservice:UserService){}
+constructor(private router:Router,private userservice:UserService,private loginservice:LoginService){}
   ngOnInit(): void {
     this.userName=sessionStorage.getItem('user')
     const data={email:this.userName}
@@ -28,6 +29,10 @@ constructor(private router:Router,private userservice:UserService){}
   })
   }
   logout(){
+    const data={email:this.userName}
+    this.loginservice.logout(data).subscribe({next :(response)=>{},error : (error)=>{
+      console.log(error.message)
+    }})
     sessionStorage.removeItem('user')
     this.router.navigate(['/login']).then(()=>{
       window.location.reload();
