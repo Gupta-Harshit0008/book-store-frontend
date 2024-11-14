@@ -10,15 +10,19 @@ export class CartService {
   addingItemstoCartUrl='http://localhost:4100/addingBooksToCart'
   removingItemfromCartUrl='http://localhost:4100/deleteItemFromCart'
   constructor(private http:HttpClient) { }
+useremail=sessionStorage.getItem('user')
 
   gettingCartItems(userid:any): Observable<any[]>{  
-    return this.http.post<any>(this.cartItemsUrl,userid)
+    const data={email:this.useremail,...userid}
+    return this.http.post<any>(this.cartItemsUrl,data)
   }
 
   addingItemtToCart(cartData:any){
-    return this.http.post(this.addingItemstoCartUrl,cartData)
+    const data={email:this.useremail,...cartData}
+    return this.http.post(this.addingItemstoCartUrl,data)
   }
   deletingItemFromCart(deleteData:any){
-    return this.http.request('DELETE',this.removingItemfromCartUrl,{body:deleteData})
+    const data={email:this.useremail,...deleteData}
+    return this.http.request('DELETE',this.removingItemfromCartUrl,{body:data})
   }
 }

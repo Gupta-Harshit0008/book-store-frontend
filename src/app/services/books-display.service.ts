@@ -18,6 +18,7 @@ export class BooksDisplayService {
   }
 
   getBookById(Bookid:any): Observable<any[]>{
-    return this.http.post<any>(`http://localhost:4100/books/${Bookid}`,Bookid).pipe(map(response => response.book))
+    const data ={email:this.empId,Bookid}
+    return this.http.post<any>(`http://localhost:4100/books/${Bookid}`,data).pipe(map(response => response.book))
   }
 }

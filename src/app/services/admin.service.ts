@@ -9,9 +9,10 @@ export class AdminService {
   constructor(private http:HttpClient) {}
 
   addNewBookUrl='http://localhost:4100/books/addNewBook/'
-
+  userEmail=sessionStorage.getItem('user')
   addNewBook(bookData:any){
-    return this.http.post(this.addNewBookUrl,bookData)
+    const data={email:this.userEmail,...bookData}
+    return this.http.post(this.addNewBookUrl,data)
   }
 
 }
