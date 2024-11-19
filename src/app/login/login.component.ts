@@ -22,6 +22,7 @@ export class LoginComponent {
   userEmail:any
   userPassword:any
   userCPassword:any
+  data:any
 
   constructor(private router: Router,private loginservice:LoginService){
 
@@ -35,6 +36,8 @@ export class LoginComponent {
     this.loginservice.login(this.logindata).subscribe({
       next: (response)=>{
         sessionStorage.setItem('user',this.userName)
+       this.data=response
+       sessionStorage.setItem('token',this.data.token)
         this.router.navigate(['/home']).then(()=>{
           window.location.reload();
         })
