@@ -8,7 +8,7 @@ export class AdminService {
 
   constructor(private http:HttpClient) {}
 
-  addNewBookUrl='http://localhost:4100/books/addNewBook/'
+  addNewBookUrl='https://book-store-backend-1-kjtz.onrender.com/books/addNewBook/'
   userEmail=sessionStorage.getItem('user')
   addNewBook(bookData:any){
     const data={email:this.userEmail,...bookData}

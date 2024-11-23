@@ -6,9 +6,9 @@ import { map,Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  cartItemsUrl='http://localhost:4100/itemsInCart'
-  addingItemstoCartUrl='http://localhost:4100/addingBooksToCart'
-  removingItemfromCartUrl='http://localhost:4100/deleteItemFromCart'
+  cartItemsUrl='https://book-store-backend-1-kjtz.onrender.com/itemsInCart'
+  addingItemstoCartUrl='https://book-store-backend-1-kjtz.onrender.com/addingBooksToCart'
+  removingItemfromCartUrl='https://book-store-backend-1-kjtz.onrender.com/deleteItemFromCart'
   constructor(private http:HttpClient) { }
 useremail=sessionStorage.getItem('user')
 

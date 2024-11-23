@@ -8,7 +8,7 @@ import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 export class UserService {
 
   constructor(private http:HttpClient) { }
- UserDetailUrl='http://localhost:4100/userDetails/';
+ UserDetailUrl='https://book-store-backend-1-kjtz.onrender.com/userDetails/';
  private dataSubject = new BehaviorSubject<any | null>(null);
 
  userDetails(userid:any): Observable<any[]>{

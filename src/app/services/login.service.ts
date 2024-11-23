@@ -8,9 +8,9 @@ import { map, Observable } from 'rxjs';
 export class LoginService {
 
   constructor(private http:HttpClient) { }
-  loginUrl='http://localhost:4100/login'
-  signupUrl='http://localhost:4100/signup'
-  logoutUrl='http://localhost:4100/logout'
+  loginUrl='https://book-store-backend-1-kjtz.onrender.com/login'
+  signupUrl='https://book-store-backend-1-kjtz.onrender.com/signup'
+  logoutUrl='https://book-store-backend-1-kjtz.onrender.com/logout'
 
 
   login(loginDetails:any) : Observable<any[]>{

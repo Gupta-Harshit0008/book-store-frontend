@@ -8,8 +8,8 @@ import { map, Observable } from 'rxjs';
 export class BooksDisplayService {
 
   constructor(private http:HttpClient) { }
-  getallbooks='http://localhost:4100/books/'
-  bookDetailsById='http://localhost:4100/books'
+  getallbooks='https://book-store-backend-1-kjtz.onrender.com/books/'
+
   empId=sessionStorage.getItem('user')
   ID={email:this.empId}
 
@@ -19,6 +19,6 @@ export class BooksDisplayService {
 
   getBookById(Bookid:any): Observable<any[]>{
     const data ={email:this.empId,Bookid}
-    return this.http.post<any>(`http://localhost:4100/books/${Bookid}`,data).pipe(map(response => response.book))
+    return this.http.post<any>(`https://book-store-backend-1-kjtz.onrender.com/${Bookid}`,data).pipe(map(response => response.book))
   }
 }
