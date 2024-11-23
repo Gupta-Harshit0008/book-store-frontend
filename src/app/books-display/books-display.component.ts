@@ -28,4 +28,7 @@ export class BooksDisplayComponent implements OnInit{
     const bookName = book.name.replace(/\s+/g, '-');
     this.router.navigate([`/${bookName}/${book._id}`]);
   }
+  getImageSource(base64Data: string): string {
+    return `data:image/png;base64,${base64Data}`;
+  }
 }
