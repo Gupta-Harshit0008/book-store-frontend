@@ -4,12 +4,16 @@
       <br>
       By {{books.Author}}
     </div>
-    <div class="card-body">
-      <h5 class="card-title"> {{books.desc}} </h5>
-      <p class="card-text">Price: {{books.price | currency:'INR'}} </p>
-      <p>Quantity Left:       {{books.quantity}} </p>
-      <p> Published By:  {{books.publisher}} </p>
-      <p>Languages : {{books.language}} </p>
-      <a class="btn btn-primary" (click)="addToCart()" >Add to Cart</a>
+    <div class="card-body" style="display: flex;">
+      <div style="width: 20%;"> 
+          <img [src]="getImageSource(books.bookImage)" class="card-img-top p-3" alt="...">
+      </div>
+      <div style="width: 80%;"> <h5 class="card-title"> {{books.desc}} </h5>
+        <p class="card-text">Price: {{books.price | currency:'INR'}} </p>
+        <p>Quantity Left:       {{books.quantity}} </p>
+        <p> Published By:  {{books.publisher}} </p>
+        <p>Languages : {{books.language}} </p>
+        <a class="btn btn-primary" (click)="addToCart()" >Add to Cart</a> </div>
+      
     </div>
   </div>

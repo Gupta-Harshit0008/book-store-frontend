@@ -2,3 +2,18 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+  

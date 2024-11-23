@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { BooksDisplayComponent } from './books-display/books-display.component';
@@ -6,6 +6,7 @@ import { CarouselsComponent } from './carousels/carousels.component';
 import { FussionComponent } from "./fussion/fussion.component";
 import { CommonModule } from '@angular/common';
 import { UserService } from './services/user.service';
+import { LoaderService } from './services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,13 @@ export class AppComponent implements OnInit{
   title = 'onlineBookStoreFrontend';
   isLoggedin:boolean=false
   userName:any
-constructor(private userservice:UserService){}
+  loaderService =inject(LoaderService)
+
+  isLoading = this.loaderService.loader$;
+  
+constructor(private userservice:UserService){
+}
+
 
   ngOnInit(): void {
   this.isLoggedIn()

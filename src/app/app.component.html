@@ -1,3 +1,8 @@
 <app-navbar *ngIf="isLoggedin"></app-navbar>
 <router-outlet />
+<!-- Add this in your global layout, e.g., app.component.html -->
+<div *ngIf="isLoading | async" class="loader">
+    Loading...
+  </div>
+  
 

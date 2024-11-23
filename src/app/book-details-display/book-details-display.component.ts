@@ -38,4 +38,8 @@ addToCart(){
         this.router.navigateByUrl('cart')
   })
 }
+
+getImageSource(base64Data: string): string {
+  return `data:image/png;base64,${base64Data}`;
+}
 }

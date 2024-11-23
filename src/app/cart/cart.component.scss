@@ -1,0 +1,10 @@
+.bookDetailsWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(max-width:451px){
+    .bookDetailsWrapper{
+        display:block;
+    }
+}
