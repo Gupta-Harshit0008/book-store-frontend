@@ -19,6 +19,6 @@ export class BooksDisplayService {
 
   getBookById(Bookid:any): Observable<any[]>{
     const data ={email:this.empId,Bookid}
-    return this.http.post<any>(`https://book-store-backend-1-kjtz.onrender.com/${Bookid}`,data).pipe(map(response => response.book))
+    return this.http.post<any>(`https://book-store-backend-1-kjtz.onrender.com/books/${Bookid}`,data).pipe(map(response => response.book))
   }
 }
