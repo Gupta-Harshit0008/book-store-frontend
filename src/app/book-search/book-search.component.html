@@ -1,4 +1,4 @@
-<div style="display: flex;flex-wrap: wrap;justify-content: center;">
+<div style="display: flex;flex-wrap: wrap;justify-content: center;" class="container my-5" *ngIf="this.Data.length >0">
     <div class="card mx-2 my-1" style="width: 16rem;" *ngFor="let books of bookData">
       <img [src]="getImageSource(books.bookImage)" class="card-img-top p-2" alt="..." style="width: 80px;left: 80px;position: relative;">
       <div class="card-body">
@@ -9,3 +9,8 @@
       </div>
     </div>
     </div>
+
+<div class="container my-5 p-5" *ngIf="this.Data.length ==0">
+
+  No Book found... 
+</div>
