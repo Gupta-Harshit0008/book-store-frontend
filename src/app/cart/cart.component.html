@@ -3,7 +3,10 @@
     <div style="display: flex;">
         <div style="width: 60%;padding: 1.5rem;border-right: 1px dotted grey;"> 
             <div style="height: 60px">Total Items <strong> ({{cartData.length}}) </strong></div>
-            <div *ngFor="let data of cartData;let i=index" style="border-top: 1px solid grey;border-bottom: 1px solid grey;">
+            <div *ngFor="let data of cartData;let i=index" style="border-top: 1px solid grey;border-bottom: 1px solid grey;" >
+                <div style="width: 8%;">
+                    <img [src]="getImageSource(data.bookImage)" class="card-img-top p-3" alt="...">
+                </div>
             <div class="bookDetailsWrapper">
                 <div style="width: 600px;height: 100px;"> <div> <b> {{data.name}}</b> </div>
             <div>

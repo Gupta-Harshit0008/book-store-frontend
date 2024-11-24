@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BooksDisplayService } from '../services/books-display.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../services/cart.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-book-details-display',
@@ -15,6 +16,10 @@ export class BookDetailsDisplayComponent implements OnInit {
 
   books:any
   bookId:any
+
+  loaderService =inject(LoaderService)
+
+  isLoading = this.loaderService.loader$;
 constructor(private booksService : BooksDisplayService,private activated:ActivatedRoute,private cartServcie:CartService,private router:Router){
 
 }

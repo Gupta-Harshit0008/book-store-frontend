@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from '../services/admin.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-add-books',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './add-books.component.html',
   styleUrl: './add-books.component.scss'
 })
@@ -19,12 +21,26 @@ export class AddBooksComponent implements OnInit {
   bookPublisher!:string
   bookLanguage!:string
   data:any
+  SelectedFile:File | null= null;
+
+  loaderService =inject(LoaderService)
+
+  isLoading = this.loaderService.loader$;
 
   constructor(private adminservice:AdminService,private router:Router){}
   ngOnInit(): void {
   }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      this.SelectedFile = input.files[0];
+    }
+  }
+
   addBook(){
     this.data={
+      bookImage:this.SelectedFile,
       name:this.bookName,
       price:this.bookPrice,
       Author:this.bookAuthor,
