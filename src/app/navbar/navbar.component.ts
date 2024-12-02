@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { LoginService } from '../services/login.service';
 import { BooksDisplayService } from '../services/books-display.service';
 import { FormsModule } from '@angular/forms';
+import { withModule } from '@angular/core/testing';
 
 @Component({
   selector: 'app-navbar',
@@ -18,9 +19,11 @@ export class NavbarComponent implements OnInit{
 userName:any
 userdetails:any
 BookName:any;
+userId:any
 constructor(private router:Router,private userservice:UserService,private loginservice:LoginService,private Bookservice:BooksDisplayService){}
   ngOnInit(): void {
     this.userName=sessionStorage.getItem('user')
+
     const data={email:this.userName}
   this.userservice.userDetails(data).subscribe({
     next: (response)=>{
@@ -31,12 +34,15 @@ constructor(private router:Router,private userservice:UserService,private logins
     }
   })
   }
+  history(){
+    this.router.navigate(['/history'])
+  }
   logout(){
     const data={email:this.userName}
     this.loginservice.logout(data).subscribe({next :(response)=>{},error : (error)=>{
       console.log(error.message)
     }})
-    sessionStorage.removeItem('user')
+    sessionStorage.clear();
     this.router.navigate(['/login']).then(()=>{
       window.location.reload();
     })

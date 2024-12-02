@@ -1,10 +1,10 @@
 <div class="container">
     <h1 class="my-3">Shopping Cart</h1>
     <div style="display: flex;">
-        <div style="width: 60%;padding: 1.5rem;border-right: 1px dotted grey;"> 
+        <div style="width: 60%;padding: 1.5rem;border-right: 1px dotted grey;height: 36rem;overflow-y: scroll;"> 
             <div style="height: 60px">Total Items <strong> ({{cartData.length}}) </strong></div>
             <div *ngFor="let data of cartData;let i=index" style="border-top: 1px solid grey;border-bottom: 1px solid grey;" >
-                <div style="width: 8%;">
+                <div style="width: 80px;">
                     <img [src]="getImageSource(data.bookImage)" class="card-img-top p-3" alt="...">
                 </div>
             <div class="bookDetailsWrapper">
@@ -36,6 +36,13 @@
                     <h6>You Pay</h6>
                     <div>{{ getTotalPrice() | currency : 'INR' }}</div>
                 </div>
+
+                <br>
+                <br>
+            <div style="display: flex;justify-content: center;">  
+                <button class="btn btn-outline-warning" (click)="proceedToBuy()">  Proceed to buy </button>
+            </div>
+     
                 
                 
         </div>

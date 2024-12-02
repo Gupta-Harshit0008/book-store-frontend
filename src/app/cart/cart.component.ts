@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,13 +14,15 @@ export class CartComponent implements OnInit{
   userId:any
   Data:any
   cartData:any
-  constructor(private cartservice:CartService){}
+  itemsInCart:any
+  constructor(private cartservice:CartService,private router:Router){}
 
   ngOnInit(): void {
     this.userId=sessionStorage.getItem('userId')
     this.cartservice.gettingCartItems({userId:this.userId}).subscribe({
       next : (response)=>{
         this.Data=response
+        this.itemsInCart=this.Data.Items
         const cartItemsDetails=this.Data.cartItemsDetails
         const Items=this.Data.Items
 
@@ -92,4 +95,25 @@ export class CartComponent implements OnInit{
   getImageSource(base64Data: string): string {
     return `data:image/png;base64,${base64Data}`;
   }
+
+  proceedToBuy(){
+    const simplifiedData:any = this.itemsInCart.map((item:CartItem) => ({ bookId:item.bookId, quantity:item.quantity }));
+const data={booksdetails:simplifiedData};
+this.cartservice.proceedToBuy(data).subscribe({
+  next : (response) =>{
+    console.log(response)
+    alert('Order SuccessFully placed')
+    this.router.navigate(['/home']) 
+  },
+
+  error : (err) =>{
+    alert(err)
+  }
+  
+})
+  }
+}
+interface CartItem {
+  bookId: string;
+  quantity: number;
 }

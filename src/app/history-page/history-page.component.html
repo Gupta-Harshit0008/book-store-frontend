@@ -1,0 +1,14 @@
+<div class="container">  
+    
+<h3 class="my-3">     User History  </h3>
+<br>
+<br>
+<br>
+
+<div *ngFor="let bookHistory of history">
+    Book Id :{{bookHistory.bookId}}
+    purchase Date: {{bookHistory.purchasedAt}}
+    quantity : {{bookHistory.quantity}}
+</div>
+
+</div>

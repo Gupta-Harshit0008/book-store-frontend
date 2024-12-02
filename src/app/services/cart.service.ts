@@ -9,8 +9,10 @@ export class CartService {
   cartItemsUrl='https://book-store-backend-1-kjtz.onrender.com/itemsInCart'
   addingItemstoCartUrl='https://book-store-backend-1-kjtz.onrender.com/addingBooksToCart'
   removingItemfromCartUrl='https://book-store-backend-1-kjtz.onrender.com/deleteItemFromCart'
+  proceedToOrderUrl='http://localhost:4100/order/purchaseorder/'
   constructor(private http:HttpClient) { }
 useremail=sessionStorage.getItem('user')
+userId=sessionStorage.getItem('userId')
 
   gettingCartItems(userid:any): Observable<any[]>{  
     const data={email:this.useremail,...userid}
@@ -24,5 +26,10 @@ useremail=sessionStorage.getItem('user')
   deletingItemFromCart(deleteData:any){
     const data={email:this.useremail,...deleteData}
     return this.http.request('DELETE',this.removingItemfromCartUrl,{body:data})
+  }
+
+  proceedToBuy(bookData:any){
+    const data={userId:this.userId,...bookData}
+return this.http.post(this.proceedToOrderUrl,data)
   }
 }
