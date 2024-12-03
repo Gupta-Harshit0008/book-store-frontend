@@ -11,14 +11,25 @@ import { CommonModule } from '@angular/common';
 })
 export class HistoryPageComponent implements OnInit{
   userId:any
+  history:any
+  
 constructor(private Bookservice: BooksDisplayService){}
-history:any
   ngOnInit(): void {
     this.userId=sessionStorage.getItem('userId')
     this.Bookservice.getBuyHistory(this.userId).subscribe({
       next: (response)=>{
         const data:any=response
-        this.history=data.purchasedDetails
+        const purchasedDetails:any=data.purchasedDetails
+        const BookDetails:any=data.BookDetails
+
+        const mergedDetails = purchasedDetails.map((purchase : any) => {
+          const bookDetail = BookDetails.find((book : any) => book._id === purchase.bookId);
+          return {
+            ...purchase,
+            ...bookDetail // Merge book details into the purchase object
+          };
+        });
+        this.history=mergedDetails
     },
       error : (err)=>{
         alert(err.message)

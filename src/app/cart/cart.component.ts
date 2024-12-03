@@ -53,6 +53,12 @@ export class CartComponent implements OnInit{
     this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
       if(data){
         // console.log(data)
+        this.cartservice.gettingCartItems({userId:this.userId}).subscribe({
+          next : (response)=>{
+            this.Data=response
+            this.itemsInCart=this.Data.Items
+      }
+      })
       }
     })
   }
@@ -67,6 +73,12 @@ export class CartComponent implements OnInit{
       }
       this.cartservice.addingItemtToCart(payload).subscribe((data:any)=>{
         if(data){
+          this.cartservice.gettingCartItems({userId:this.userId}).subscribe({
+            next : (response)=>{
+              this.Data=response
+              this.itemsInCart=this.Data.Items
+        }
+        })
           // console.log(data)
         }
       })

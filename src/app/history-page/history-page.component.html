@@ -5,10 +5,16 @@
 <br>
 <br>
 
-<div *ngFor="let bookHistory of history">
-    Book Id :{{bookHistory.bookId}}
-    purchase Date: {{bookHistory.purchasedAt}}
-    quantity : {{bookHistory.quantity}}
+<div  style="display: flex;flex-wrap: wrap;justify-content: center;">
+    <div class="card mx-2 my-1" style="width: 20rem;" *ngFor="let bookHistory of history">
+        <div class="card-body">
+          <h5 class="card-title">{{bookHistory.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Quantity : <b> {{bookHistory.quantity}} </b>  </li>
+          <li class="list-group-item"> Purchased At : <b> {{bookHistory.purchasedAt | date : 'fullDate'}} </b>  </li>
+        </ul>
+      </div>
 </div>
 
 </div>
