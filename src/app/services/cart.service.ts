@@ -9,7 +9,7 @@ export class CartService {
   cartItemsUrl='https://book-store-backend-1-kjtz.onrender.com/itemsInCart'
   addingItemstoCartUrl='https://book-store-backend-1-kjtz.onrender.com/addingBooksToCart'
   removingItemfromCartUrl='https://book-store-backend-1-kjtz.onrender.com/deleteItemFromCart'
-  proceedToOrderUrl='http://localhost:4100/order/purchaseorder/'
+  proceedToOrderUrl='https://book-store-backend-1-kjtz.onrender.com/order/purchaseorder/'
   constructor(private http:HttpClient) { }
 useremail=sessionStorage.getItem('user')
 userId=sessionStorage.getItem('userId')

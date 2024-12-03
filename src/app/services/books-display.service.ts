@@ -10,7 +10,7 @@ export class BooksDisplayService {
   constructor(private http:HttpClient) { }
   getallbooks='https://book-store-backend-1-kjtz.onrender.com/books/'
   getBookByNameurl='https://book-store-backend-1-kjtz.onrender.com/books/Bookname/'
-  getHistory='http://localhost:4100/order/purchaseorderdetails/'
+  getHistory='https://book-store-backend-1-kjtz.onrender.com/order/purchaseorderdetails/'
   empuserId=sessionStorage.getItem('user')
   ID={email:this.empuserId}
 
@@ -20,7 +20,7 @@ export class BooksDisplayService {
 
   getBookById(Bookid:any): Observable<any[]>{
     const data ={email:this.empuserId,Bookid}
-    return this.http.post<any>(`http://localhost:4100/books/${Bookid}`,data).pipe(map(response => response.book))
+    return this.http.post<any>(`https://book-store-backend-1-kjtz.onrender.com/books/${Bookid}`,data).pipe(map(response => response.book))
   }
 
   getBookByName(BookName:any): Observable<any[]>{
